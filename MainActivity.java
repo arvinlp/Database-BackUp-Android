@@ -27,13 +27,20 @@ public class Backup extends Activity {
         exportDB();
     }
 
-
+/**
+ * تابع که برای خروجی گرفتن از دیتابیس استفاده می گردد
+ **/
+ 
     private void exportDB(){
+        //محل فایل خروجی
         File sd = Environment.getExternalStorageDirectory();
+        //محل پوشه دیتا در اندروید
         File data = Environment.getDataDirectory();
         FileChannel source=null;
         FileChannel destination=null;
+        //محل فایل دیتابیس
         String currentDBPath = "/data/"+ PACKAGE_NAME +"/databases/"+DATABASE_NAME;
+        // محل جدید فایل دیتابیس ما (در ریشه مموری کارت می باشد).
         String backupDBPath = DATABASE_NAME+".sql";
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
